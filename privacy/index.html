@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Big Stretch</title>
+  <link rel="icon" type="image/png" href="../icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --orange: #FF8C42;
+      --black: #1A1A1A;
+      --gray: #777777;
+      --gray-light: #B0B0B0;
+      --border: #E5E5E5;
+      --white: #FFFFFF;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    body {
+      font-family: var(--sans);
+      color: var(--black);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 32px 100px;
+    }
+    .content h1 {
+      font-family: var(--serif);
+      font-size: 40px;
+      margin-bottom: 8px;
+    }
+    .content .updated {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+    .content h2 {
+      font-family: var(--serif);
+      font-size: 24px;
+      margin-top: 40px;
+      margin-bottom: 12px;
+    }
+    .content p, .content li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #444;
+      margin-bottom: 12px;
+    }
+    .content ul {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+    .content a {
+      color: var(--orange);
+    }
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .footer-left { font-size: 13px; color: var(--gray-light); }
+    .footer-right { display: flex; gap: 24px; }
+    .footer-right a {
+      font-size: 13px;
+      color: var(--gray);
+      text-decoration: none;
+    }
+    .footer-right a:hover { color: var(--black); }
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .content { padding: 32px 24px 80px; }
+      .content h1 { font-size: 32px; }
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">big stretch 🐾</a>
+  </nav>
+
+  <div class="content">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: April 7, 2026</p>
+
+    <p>Pia Industries LLC ("we", "our", or "us") operates the Big Stretch mobile application. This Privacy Policy explains how we collect, use, and protect your information when you use our app.</p>
+
+    <h2>Information We Collect</h2>
+    <p>Big Stretch is designed with privacy in mind. We collect minimal data necessary to provide the service:</p>
+    <ul>
+      <li><strong>Pet Data:</strong> Pet name, breed, birthday, and activity logs (potty breaks, feedings, training sessions) you create within the app. This data is stored locally on your device.</li>
+      <li><strong>Analytics Data:</strong> We use PostHog to collect anonymous usage analytics such as which features are used and how often. No personally identifiable information (PII) is collected. Pet names (not human names) may appear in analytics events.</li>
+      <li><strong>Purchase Data:</strong> Subscription and purchase information is managed entirely by Apple through the App Store and RevenueCat. We do not collect or store payment information.</li>
+      <li><strong>Crash Reports:</strong> We use Sentry to collect anonymous crash reports to improve app stability. These reports contain device type and OS version but no personal information.</li>
+    </ul>
+
+    <h2>Information We Do Not Collect</h2>
+    <ul>
+      <li>We do not collect your name, email address, or phone number</li>
+      <li>We do not collect location data</li>
+      <li>We do not collect photos or camera data</li>
+      <li>We do not require account creation</li>
+      <li>We do not sell or share personal data with third parties</li>
+    </ul>
+
+    <h2>Data Storage</h2>
+    <p>All pet data and activity logs are stored locally on your device using encrypted on-device storage (MMKV). Your data never leaves your device unless you choose to delete the app, which will remove all locally stored data.</p>
+
+    <h2>Third-Party Services</h2>
+    <p>We use the following third-party services:</p>
+    <ul>
+      <li><strong>RevenueCat:</strong> For managing in-app subscriptions. <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><strong>PostHog:</strong> For anonymous usage analytics. <a href="https://posthog.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><strong>Sentry:</strong> For anonymous crash reporting. <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">Privacy Policy</a></li>
+    </ul>
+
+    <h2>Children's Privacy</h2>
+    <p>Big Stretch does not knowingly collect personal information from children under 13. The app tracks pet information only and does not require any human personal data to function.</p>
+
+    <h2>Data Deletion</h2>
+    <p>Since all data is stored locally on your device, you can delete all data by deleting the app. No server-side data deletion is necessary as we do not store your data on our servers.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+
+    <h2>Contact Us</h2>
+    <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:support@bigstretchapp.com">support@bigstretchapp.com</a>.</p>
+  </div>
+
+  <footer>
+    <span class="footer-left">&copy; 2026 Pia Industries LLC</span>
+    <div class="footer-right">
+      <a href="/terms">Terms</a>
+      <a href="/privacy">Privacy</a>
+      <a href="mailto:support@bigstretchapp.com">Support</a>
+    </div>
+  </footer>
+</body>
+</html>

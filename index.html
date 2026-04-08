@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Big Stretch — Puppy Training Made Easy</title>
+  <meta name="description" content="Track potty breaks, master training commands, and watch your puppy grow with streaks, XP, and a personalized Puppy Score.">
+  <meta property="og:title" content="Big Stretch — Puppy Training Made Easy">
+  <meta property="og:description" content="The gamified puppy training tracker. Potty logs, training commands, streaks, and badges.">
+  <meta property="og:image" content="https://bigstretchapp.com/og-image.png">
+  <meta property="og:url" content="https://bigstretchapp.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --orange: #FF8C42;
+      --orange-dark: #E8751F;
+      --orange-bg: #FFF6EF;
+      --green: #58CC02;
+      --black: #1A1A1A;
+      --gray: #777777;
+      --gray-light: #B0B0B0;
+      --border: #E5E5E5;
+      --white: #FFFFFF;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--black);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav — minimal underline style ────────────────────── */
+    nav {
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--gray);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
+    .nav-links a.download {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    /* ── Hero — centered, stacked ─────────────────────────── */
+    .hero {
+      text-align: center;
+      padding: 80px 32px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(48px, 7.5vw, 88px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: var(--gray);
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto 36px;
+    }
+
+    .app-store-link {
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .app-store-link:hover { transform: scale(1.05); }
+    .app-store-link img { height: 52px; }
+
+    .hero-note {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--gray-light);
+    }
+
+    /* ── Phones showcase — 3 fanned screens ───────────────── */
+    .phones {
+      padding: 40px 32px 80px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone {
+      width: 220px;
+      height: 450px;
+      background: var(--black);
+      border-radius: 32px;
+      padding: 10px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      position: relative;
+      transition: transform 0.4s ease;
+      flex-shrink: 0;
+    }
+
+    .phone:nth-child(1) {
+      transform: rotate(-8deg) translateY(20px);
+      z-index: 1;
+    }
+
+    .phone:nth-child(2) {
+      transform: translateY(0);
+      z-index: 3;
+      margin: 0 -30px;
+      width: 240px;
+      height: 490px;
+    }
+
+    .phone:nth-child(3) {
+      transform: rotate(8deg) translateY(20px);
+      z-index: 1;
+    }
+
+    .phone-inner {
+      width: 100%;
+      height: 100%;
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 20px;
+      background: var(--black);
+      border-radius: 12px;
+      z-index: 10;
+    }
+
+    /* Phone screen content */
+    .scr-header {
+      padding: 36px 16px 8px;
+      font-family: var(--sans);
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .scr-sub {
+      padding: 0 16px 10px;
+      font-size: 10px;
+      color: var(--gray);
+    }
+
+    .scr-card {
+      margin: 0 12px 8px;
+      background: #F8F8F6;
+      border-radius: 12px;
+      padding: 11px 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .scr-card .ic {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .ic.potty { background: #E8F5E9; }
+    .ic.feed  { background: #FFF3E0; }
+    .ic.train { background: #E3F2FD; }
+    .ic.social { background: #F3E5F5; }
+
+    .scr-card h4 {
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 1px;
+    }
+
+    .scr-card span {
+      font-size: 9px;
+      color: var(--gray);
+      display: block;
+    }
+
+    /* Score screen */
+    .scr-score-ring {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 5px solid var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 16px auto 10px;
+      flex-direction: column;
+    }
+
+    .scr-score-ring .num {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .scr-score-ring .of {
+      font-size: 9px;
+      color: var(--gray);
+    }
+
+    .scr-bar {
+      margin: 0 20px 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scr-bar .bl {
+      font-size: 9px;
+      font-weight: 600;
+      width: 50px;
+      text-align: right;
+    }
+
+    .scr-bar .bt {
+      flex: 1;
+      height: 6px;
+      background: #EEE;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .scr-bar .bf {
+      height: 100%;
+      border-radius: 3px;
+    }
+
+    .bf.p { background: var(--green); width: 85%; }
+    .bf.f { background: var(--orange); width: 70%; }
+    .bf.t { background: #1CB0F6; width: 60%; }
+
+    /* Streak screen */
+    .scr-streak {
+      text-align: center;
+      padding: 16px;
+    }
+
+    .scr-streak .fire { font-size: 44px; margin-bottom: 4px; }
+
+    .scr-streak .cnt {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .scr-streak .day-label {
+      font-size: 12px;
+      color: var(--gray);
+      margin: 4px 0 16px;
+    }
+
+    .scr-week {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .scr-week .wd {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 600;
+    }
+
+    .wd.on { background: var(--orange); color: var(--white); }
+    .wd.off { background: #F0F0F0; color: var(--gray-light); }
+
+    /* ── Orange section — features ────────────────────────── */
+    .features-section {
+      background: var(--orange);
+      padding: 80px 48px;
+    }
+
+    .features-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .feat {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 32px 24px;
+      color: var(--white);
+    }
+
+    .feat .feat-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .feat h3 {
+      font-family: var(--serif);
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .feat p {
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+
+    /* ── How it works ─────────────────────────────────────── */
+    .how {
+      padding: 100px 48px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .how .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .how h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4.5vw, 48px);
+      margin-bottom: 56px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      text-align: left;
+      counter-reset: step;
+    }
+
+    .step { counter-increment: step; }
+
+    .step::before {
+      content: counter(step);
+      font-family: var(--serif);
+      font-size: 48px;
+      color: var(--orange-bg);
+      line-height: 1;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .step h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── Testimonial ──────────────────────────────────────── */
+    .testimonial {
+      padding: 80px 48px;
+      background: var(--orange-bg);
+      text-align: center;
+    }
+
+    .testimonial-inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .testimonial .stars {
+      font-size: 20px;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      color: var(--orange);
+    }
+
+    .testimonial blockquote {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    /* ── Bottom CTA ───────────────────────────────────────── */
+    .cta-bottom {
+      padding: 80px 48px;
+      text-align: center;
+    }
+
+    .cta-bottom h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 52px);
+      margin-bottom: 12px;
+    }
+
+    .cta-bottom p {
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+
+    /* ── Footer ────────────────────────────────────────────── */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-left {
+      font-size: 13px;
+      color: var(--gray-light);
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-right a {
+      font-size: 13px;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-right a:hover { color: var(--black); }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      nav { padding: 20px 24px; }
+      .nav-links { gap: 20px; }
+
+      .hero { padding: 60px 24px 40px; }
+
+      .phones { padding: 20px 16px 60px; }
+      .phone { width: 160px; height: 330px; border-radius: 24px; padding: 8px; }
+      .phone:nth-child(2) { width: 180px; height: 370px; margin: 0 -20px; }
+      .phone-inner { border-radius: 18px; }
+      .phone-notch { width: 60px; height: 16px; }
+      .scr-header { font-size: 14px; padding: 28px 12px 6px; }
+      .scr-sub { font-size: 8px; padding: 0 12px 6px; }
+      .scr-card { margin: 0 8px 6px; padding: 8px 10px; gap: 8px; }
+      .scr-card .ic { width: 24px; height: 24px; font-size: 12px; }
+      .scr-card h4 { font-size: 9px; }
+      .scr-card span { font-size: 7px; }
+
+      .features-section { padding: 60px 24px; }
+      .features-inner { grid-template-columns: 1fr; max-width: 400px; }
+
+      .how { padding: 72px 24px; }
+      .steps { grid-template-columns: 1fr; gap: 32px; }
+
+      .testimonial { padding: 60px 24px; }
+      .cta-bottom { padding: 60px 24px; }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .phone:nth-child(1),
+      .phone:nth-child(3) { display: none; }
+      .phone:nth-child(2) { transform: none; margin: 0; width: 240px; height: 490px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ─────────────────────────────────────────────── -->
+  <nav>
+    <a href="/" class="nav-logo"><img src="logo.png" alt="Big Stretch logo">Big Stretch</a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="https://apps.apple.com/app/big-stretch" class="download" target="_blank" rel="noopener">Download</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────── -->
+  <section class="hero">
+    <h1>Your puppy's first year, sorted.</h1>
+    <p>Potty tracking, training commands, feeding logs, and daily streaks — everything new puppy parents need in one app.</p>
+    <a href="https://apps.apple.com/app/big-stretch" class="app-store-link" target="_blank" rel="noopener">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+    </a>
+    <div class="hero-note">Free 7-day trial · Cancel anytime</div>
+  </section>
+
+  <!-- ── 3 Phone showcase ────────────────────────────────── -->
+  <section class="phones">
+
+    <!-- Phone 1: Puppy Score -->
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="phone-notch"></div>
+        <div class="scr-header">Puppy Score</div>
+        <div class="scr-score-ring">
+          <span class="num">78</span>
+          <span class="of">/ 100</span>
+        </div>
+        <div class="scr-bar">
+          <span class="bl">Potty</span>
+          <div class="bt"><div class="bf p"></div></div>
+        </div>
+        <div class="scr-bar">
+          <span class="bl">Feeding</span>
+          <div class="bt"><div class="bf f"></div></div>
+        </div>
+        <div class="scr-bar">
+          <span class="bl">Training</span>
+          <div class="bt"><div class="bf t"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone 2: Today (center, larger) -->
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="phone-notch"></div>
+        <div class="scr-header">Today 👋</div>
+        <div class="scr-sub">Monday, April 7</div>
+        <div class="scr-card">
+          <div class="ic potty">📍</div>
+          <div>
+            <h4>Potty Break</h4>
+            <span>Last: 45 min ago · Outside ✓</span>
+          </div>
+        </div>
+        <div class="scr-card">
+          <div class="ic feed">🍽</div>
+          <div>
+            <h4>Breakfast</h4>
+            <span>½ cup · Purina Pro Plan</span>
+          </div>
+        </div>
+        <div class="scr-card">
+          <div class="ic train">🎓</div>
+          <div>
+            <h4>Training</h4>
+            <span>Sit · 3 reps · +9 XP</span>
+          </div>
+        </div>
+        <div class="scr-card">
+          <div class="ic social">🐕</div>
+          <div>
+            <h4>Socialization</h4>
+            <span>Met 2 new dogs at park</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone 3: Streaks -->
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="phone-notch"></div>
+        <div class="scr-header">Streaks 🔥</div>
+        <div class="scr-streak">
+          <div class="fire">🔥</div>
+          <div class="cnt">12</div>
+          <div class="day-label">day streak</div>
+          <div class="scr-week">
+            <div class="wd on">M</div>
+            <div class="wd on">T</div>
+            <div class="wd on">W</div>
+            <div class="wd on">T</div>
+            <div class="wd on">F</div>
+            <div class="wd on">S</div>
+            <div class="wd off">S</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── Features (orange section) ───────────────────────── -->
+  <section class="features-section" id="features">
+    <div class="features-inner">
+      <div class="feat">
+        <div class="feat-icon">📍</div>
+        <h3>Potty Tracking</h3>
+        <p>Log every break with one tap. Spot patterns, predict schedules, reduce accidents.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🏠</div>
+        <h3>Crate Training</h3>
+        <p>Timed crate sessions with built-in reminders. Build confidence and a calm routine.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🎓</div>
+        <h3>Training Commands</h3>
+        <p>50+ commands from sit to heel. Step-by-step guides with built-in progress tracking.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🏆</div>
+        <h3>Streaks & XP</h3>
+        <p>Earn XP for every log. Build streaks, unlock badges, and watch your Puppy Score climb.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How it works ─────────────────────────────────────── -->
+  <section class="how" id="how">
+    <p class="section-label">How it works</p>
+    <h2>Three taps. That's it.</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Add your puppy</h3>
+        <p>Name, breed, birthday. Takes 30 seconds and we personalize everything.</p>
+      </div>
+      <div class="step">
+        <h3>Log daily activities</h3>
+        <p>Potty, feedings, training, socialization — all one-tap logs throughout the day.</p>
+      </div>
+      <div class="step">
+        <h3>Watch them grow</h3>
+        <p>Your Puppy Score updates daily. Streaks keep you consistent. Badges celebrate wins.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Testimonial ──────────────────────────────────────── -->
+  <section class="testimonial">
+    <div class="testimonial-inner">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I finally feel like I know what I'm doing as a puppy parent."</blockquote>
+      <cite>— First-time golden retriever owner</cite>
+    </div>
+  </section>
+
+  <!-- ── Bottom CTA ───────────────────────────────────────── -->
+  <section class="cta-bottom">
+    <h2>Start your puppy's best year.</h2>
+    <p>Free to download. Free to try for 7 days.</p>
+    <a href="https://apps.apple.com/app/big-stretch" class="app-store-link" target="_blank" rel="noopener">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+    </a>
+  </section>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-left">&copy; 2026 Pia Industries LLC</span>
+    <div class="footer-right">
+      <a href="/terms">Terms</a>
+      <a href="/privacy">Privacy</a>
+      <a href="mailto:support@bigstretchapp.com">Support</a>
+    </div>
+  </footer>
+
+</body>
+</html>
