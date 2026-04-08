@@ -154,7 +154,7 @@
       color: var(--gray-light);
     }
 
-    /* ── Phones showcase — 3 fanned screens ───────────────── */
+    /* ── Screenshots showcase — 3 fanned images ─────────── */
     .phones {
       padding: 40px 32px 80px;
       display: flex;
@@ -167,14 +167,18 @@
 
     .phone {
       width: 220px;
-      height: 450px;
-      background: var(--black);
-      border-radius: 32px;
-      padding: 10px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
       position: relative;
       transition: transform 0.4s ease;
       flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .phone img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .phone:nth-child(1) {
@@ -187,183 +191,12 @@
       z-index: 3;
       margin: 0 -30px;
       width: 240px;
-      height: 490px;
     }
 
     .phone:nth-child(3) {
       transform: rotate(8deg) translateY(20px);
       z-index: 1;
     }
-
-    .phone-inner {
-      width: 100%;
-      height: 100%;
-      background: var(--white);
-      border-radius: 24px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .phone-notch {
-      position: absolute;
-      top: 6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 20px;
-      background: var(--black);
-      border-radius: 12px;
-      z-index: 10;
-    }
-
-    /* Phone screen content */
-    .scr-header {
-      padding: 36px 16px 8px;
-      font-family: var(--sans);
-      font-size: 17px;
-      font-weight: 700;
-    }
-
-    .scr-sub {
-      padding: 0 16px 10px;
-      font-size: 10px;
-      color: var(--gray);
-    }
-
-    .scr-card {
-      margin: 0 12px 8px;
-      background: #F8F8F6;
-      border-radius: 12px;
-      padding: 11px 13px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .scr-card .ic {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      flex-shrink: 0;
-    }
-
-    .ic.potty { background: #E8F5E9; }
-    .ic.feed  { background: #FFF3E0; }
-    .ic.train { background: #E3F2FD; }
-    .ic.social { background: #F3E5F5; }
-
-    .scr-card h4 {
-      font-size: 11px;
-      font-weight: 700;
-      margin-bottom: 1px;
-    }
-
-    .scr-card span {
-      font-size: 9px;
-      color: var(--gray);
-      display: block;
-    }
-
-    /* Score screen */
-    .scr-score-ring {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 5px solid var(--orange);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 16px auto 10px;
-      flex-direction: column;
-    }
-
-    .scr-score-ring .num {
-      font-size: 30px;
-      font-weight: 700;
-      color: var(--orange);
-      line-height: 1;
-    }
-
-    .scr-score-ring .of {
-      font-size: 9px;
-      color: var(--gray);
-    }
-
-    .scr-bar {
-      margin: 0 20px 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .scr-bar .bl {
-      font-size: 9px;
-      font-weight: 600;
-      width: 50px;
-      text-align: right;
-    }
-
-    .scr-bar .bt {
-      flex: 1;
-      height: 6px;
-      background: #EEE;
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .scr-bar .bf {
-      height: 100%;
-      border-radius: 3px;
-    }
-
-    .bf.p { background: var(--green); width: 85%; }
-    .bf.f { background: var(--orange); width: 70%; }
-    .bf.t { background: #1CB0F6; width: 60%; }
-
-    /* Streak screen */
-    .scr-streak {
-      text-align: center;
-      padding: 16px;
-    }
-
-    .scr-streak .fire { font-size: 44px; margin-bottom: 4px; }
-
-    .scr-streak .cnt {
-      font-size: 40px;
-      font-weight: 700;
-      color: var(--orange);
-      line-height: 1;
-    }
-
-    .scr-streak .day-label {
-      font-size: 12px;
-      color: var(--gray);
-      margin: 4px 0 16px;
-    }
-
-    .scr-week {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .scr-week .wd {
-      width: 26px;
-      height: 26px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      font-weight: 600;
-    }
-
-    .wd.on { background: var(--orange); color: var(--white); }
-    .wd.off { background: #F0F0F0; color: var(--gray-light); }
 
     /* ── Orange section — features ────────────────────────── */
     .features-section {
@@ -520,16 +353,8 @@
       .hero { padding: 60px 24px 40px; }
 
       .phones { padding: 20px 16px 60px; }
-      .phone { width: 160px; height: 330px; border-radius: 24px; padding: 8px; }
-      .phone:nth-child(2) { width: 180px; height: 370px; margin: 0 -20px; }
-      .phone-inner { border-radius: 18px; }
-      .phone-notch { width: 60px; height: 16px; }
-      .scr-header { font-size: 14px; padding: 28px 12px 6px; }
-      .scr-sub { font-size: 8px; padding: 0 12px 6px; }
-      .scr-card { margin: 0 8px 6px; padding: 8px 10px; gap: 8px; }
-      .scr-card .ic { width: 24px; height: 24px; font-size: 12px; }
-      .scr-card h4 { font-size: 9px; }
-      .scr-card span { font-size: 7px; }
+      .phone { width: 160px; border-radius: 12px; }
+      .phone:nth-child(2) { width: 180px; margin: 0 -20px; }
 
       .features-section { padding: 60px 24px; }
       .features-inner { grid-template-columns: 1fr; max-width: 400px; }
@@ -551,7 +376,7 @@
     @media (max-width: 480px) {
       .phone:nth-child(1),
       .phone:nth-child(3) { display: none; }
-      .phone:nth-child(2) { transform: none; margin: 0; width: 240px; height: 490px; }
+      .phone:nth-child(2) { transform: none; margin: 0; width: 240px; }
     }
   </style>
 </head>
@@ -582,92 +407,17 @@
     <div class="hero-note">Free 7-day trial · Cancel anytime</div>
   </section>
 
-  <!-- ── 3 Phone showcase ────────────────────────────────── -->
+  <!-- ── 3 Screenshot showcase ─────────────────────────── -->
   <section class="phones">
-
-    <!-- Phone 1: Puppy Score -->
     <div class="phone">
-      <div class="phone-inner">
-        <div class="phone-notch"></div>
-        <div class="scr-header">Puppy Score</div>
-        <div class="scr-score-ring">
-          <span class="num">78</span>
-          <span class="of">/ 100</span>
-        </div>
-        <div class="scr-bar">
-          <span class="bl">Potty</span>
-          <div class="bt"><div class="bf p"></div></div>
-        </div>
-        <div class="scr-bar">
-          <span class="bl">Feeding</span>
-          <div class="bt"><div class="bf f"></div></div>
-        </div>
-        <div class="scr-bar">
-          <span class="bl">Training</span>
-          <div class="bt"><div class="bf t"></div></div>
-        </div>
-      </div>
+      <img src="screenshot-1.jpg" alt="Reduce Accidents Faster — Today screen showing potty streaks and daily tracking" loading="lazy">
     </div>
-
-    <!-- Phone 2: Today (center, larger) -->
     <div class="phone">
-      <div class="phone-inner">
-        <div class="phone-notch"></div>
-        <div class="scr-header">Today 👋</div>
-        <div class="scr-sub">Monday, April 7</div>
-        <div class="scr-card">
-          <div class="ic potty">📍</div>
-          <div>
-            <h4>Potty Break</h4>
-            <span>Last: 45 min ago · Outside ✓</span>
-          </div>
-        </div>
-        <div class="scr-card">
-          <div class="ic feed">🍽</div>
-          <div>
-            <h4>Breakfast</h4>
-            <span>½ cup · Purina Pro Plan</span>
-          </div>
-        </div>
-        <div class="scr-card">
-          <div class="ic train">🎓</div>
-          <div>
-            <h4>Training</h4>
-            <span>Sit · 3 reps · +9 XP</span>
-          </div>
-        </div>
-        <div class="scr-card">
-          <div class="ic social">🐕</div>
-          <div>
-            <h4>Socialization</h4>
-            <span>Met 2 new dogs at park</span>
-          </div>
-        </div>
-      </div>
+      <img src="screenshot-2.jpg" alt="Teach Sit, Stay, Come & More — Practice screen with step-by-step commands" loading="lazy">
     </div>
-
-    <!-- Phone 3: Streaks -->
     <div class="phone">
-      <div class="phone-inner">
-        <div class="phone-notch"></div>
-        <div class="scr-header">Streaks 🔥</div>
-        <div class="scr-streak">
-          <div class="fire">🔥</div>
-          <div class="cnt">12</div>
-          <div class="day-label">day streak</div>
-          <div class="scr-week">
-            <div class="wd on">M</div>
-            <div class="wd on">T</div>
-            <div class="wd on">W</div>
-            <div class="wd on">T</div>
-            <div class="wd on">F</div>
-            <div class="wd on">S</div>
-            <div class="wd off">S</div>
-          </div>
-        </div>
-      </div>
+      <img src="screenshot-3.jpg" alt="See Your Puppy's Progress — Level, XP, and weekly activity chart" loading="lazy">
     </div>
-
   </section>
 
   <!-- ── Features (orange section) ───────────────────────── -->
