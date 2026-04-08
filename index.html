@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -27,7 +27,7 @@
       --gray-light: #B0B0B0;
       --border: #E5E5E5;
       --white: #FFFFFF;
-      --serif: 'DM Serif Display', Georgia, serif;
+      --heading: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
       --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
@@ -97,9 +97,9 @@
     }
 
     .hero h1 {
-      font-family: var(--serif);
+      font-family: var(--heading);
       font-size: clamp(48px, 7.5vw, 88px);
-      font-weight: 400;
+      font-weight: 900;
       line-height: 1.1;
       letter-spacing: -0.02em;
       margin-bottom: 24px;
@@ -120,6 +120,33 @@
 
     .app-store-link:hover { transform: scale(1.05); }
     .app-store-link img { height: 52px; }
+
+    .hero-quote {
+      margin-bottom: 32px;
+    }
+
+    .hero-quote .stars {
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: var(--orange);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .hero-quote blockquote {
+      font-family: var(--heading);
+      font-size: clamp(18px, 2.5vw, 22px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    .hero-quote cite {
+      font-style: normal;
+      font-size: 13px;
+      color: var(--gray);
+    }
 
     .hero-note {
       margin-top: 14px;
@@ -367,8 +394,9 @@
     }
 
     .feat h3 {
-      font-family: var(--serif);
+      font-family: var(--heading);
       font-size: 20px;
+      font-weight: 800;
       margin-bottom: 8px;
     }
 
@@ -396,8 +424,9 @@
     }
 
     .how h2 {
-      font-family: var(--serif);
+      font-family: var(--heading);
       font-size: clamp(32px, 4.5vw, 48px);
+      font-weight: 900;
       margin-bottom: 56px;
     }
 
@@ -413,9 +442,10 @@
 
     .step::before {
       content: counter(step);
-      font-family: var(--serif);
+      font-family: var(--heading);
       font-size: 48px;
-      color: var(--orange-bg);
+      color: var(--orange);
+      opacity: 0.25;
       line-height: 1;
       display: block;
       margin-bottom: 12px;
@@ -433,38 +463,6 @@
       line-height: 1.6;
     }
 
-    /* ── Testimonial ──────────────────────────────────────── */
-    .testimonial {
-      padding: 80px 48px;
-      background: var(--orange-bg);
-      text-align: center;
-    }
-
-    .testimonial-inner {
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    .testimonial .stars {
-      font-size: 20px;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-      color: var(--orange);
-    }
-
-    .testimonial blockquote {
-      font-family: var(--serif);
-      font-size: clamp(22px, 3vw, 30px);
-      line-height: 1.35;
-      margin-bottom: 16px;
-    }
-
-    .testimonial cite {
-      font-style: normal;
-      font-size: 14px;
-      color: var(--gray);
-    }
-
     /* ── Bottom CTA ───────────────────────────────────────── */
     .cta-bottom {
       padding: 80px 48px;
@@ -472,8 +470,9 @@
     }
 
     .cta-bottom h2 {
-      font-family: var(--serif);
+      font-family: var(--heading);
       font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
       margin-bottom: 12px;
     }
 
@@ -572,6 +571,11 @@
   <section class="hero">
     <h1>Your puppy's first year, sorted.</h1>
     <p>Potty tracking, training commands, feeding logs, and daily streaks — everything new puppy parents need in one app.</p>
+    <div class="hero-quote">
+      <span class="stars">★★★★★</span>
+      <blockquote>"I finally feel like I know what I'm doing as a puppy parent."</blockquote>
+      <cite>— First-time golden retriever owner</cite>
+    </div>
     <a href="https://apps.apple.com/app/big-stretch" class="app-store-link" target="_blank" rel="noopener">
       <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
     </a>
@@ -709,15 +713,6 @@
         <h3>Watch them grow</h3>
         <p>Your Puppy Score updates daily. Streaks keep you consistent. Badges celebrate wins.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ── Testimonial ──────────────────────────────────────── -->
-  <section class="testimonial">
-    <div class="testimonial-inner">
-      <div class="stars">★★★★★</div>
-      <blockquote>"I finally feel like I know what I'm doing as a puppy parent."</blockquote>
-      <cite>— First-time golden retriever owner</cite>
     </div>
   </section>
 

@@ -33,11 +33,19 @@
       justify-content: space-between;
     }
     .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-family: var(--sans);
       font-size: 18px;
       font-weight: 700;
       color: var(--black);
       text-decoration: none;
+    }
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
     }
     .content {
       max-width: 720px;
@@ -105,7 +113,7 @@
 </head>
 <body>
   <nav>
-    <a href="/" class="nav-logo">big stretch 🐾</a>
+    <a href="/" class="nav-logo"><img src="../logo.png" alt="Big Stretch logo">Big Stretch</a>
   </nav>
 
   <div class="content">
