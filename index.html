@@ -20,8 +20,6 @@
     :root {
       --orange: #FF8C42;
       --orange-dark: #E8751F;
-      --orange-bg: #FFF6EF;
-      --green: #58CC02;
       --black: #1A1A1A;
       --gray: #777777;
       --gray-light: #B0B0B0;
@@ -31,22 +29,20 @@
       --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--sans);
       color: var(--black);
       background: var(--white);
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
 
-    /* ── Nav — minimal underline style ────────────────────── */
+    /* ── Nav ──────────────────────────────────────────────── */
     nav {
       padding: 24px 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
 
     .nav-logo {
@@ -67,50 +63,29 @@
       border-radius: 8px;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      color: var(--gray);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--black); }
-
-    .nav-links a.download {
-      color: var(--orange);
-      font-weight: 600;
-    }
-
-    /* ── Hero — centered, stacked ─────────────────────────── */
+    /* ── Hero ─────────────────────────────────────────────── */
     .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      padding: 80px 32px 60px;
-      max-width: 800px;
-      margin: 0 auto;
+      padding: 60px 32px 0;
+      gap: 24px;
     }
 
     .hero h1 {
       font-family: var(--heading);
-      font-size: clamp(48px, 7.5vw, 88px);
+      font-size: clamp(40px, 7vw, 80px);
       font-weight: 900;
       line-height: 1.1;
       letter-spacing: -0.02em;
-      margin-bottom: 24px;
     }
 
     .hero p {
-      font-size: clamp(16px, 1.8vw, 19px);
+      font-size: clamp(15px, 1.6vw, 18px);
       color: var(--gray);
       line-height: 1.6;
-      max-width: 500px;
-      margin: 0 auto 36px;
+      max-width: 460px;
     }
 
     .app-store-link {
@@ -121,55 +96,23 @@
     .app-store-link:hover { transform: scale(1.05); }
     .app-store-link img { height: 52px; }
 
-    .hero-quote {
-      margin-bottom: 32px;
-    }
-
-    .hero-quote .stars {
-      font-size: 18px;
-      letter-spacing: 2px;
-      color: var(--orange);
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .hero-quote blockquote {
-      font-family: var(--heading);
-      font-size: clamp(18px, 2.5vw, 22px);
-      font-weight: 700;
-      line-height: 1.4;
-      color: var(--black);
-      margin-bottom: 6px;
-    }
-
-    .hero-quote cite {
-      font-style: normal;
-      font-size: 13px;
-      color: var(--gray);
-    }
-
     .hero-note {
-      margin-top: 14px;
       font-size: 13px;
       color: var(--gray-light);
     }
 
-    /* ── Screenshots showcase — 3 fanned images ─────────── */
+    /* ── Screenshots ──────────────────────────────────────── */
     .phones {
-      padding: 40px 32px 80px;
+      padding: 40px 32px 60px;
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      gap: 0;
-      position: relative;
       overflow: hidden;
     }
 
     .phone {
-      width: 180px;
-      position: relative;
-      transition: transform 0.4s ease;
       flex-shrink: 0;
+      transition: transform 0.4s ease;
     }
 
     .phone img {
@@ -179,148 +122,32 @@
     }
 
     .phone:nth-child(1) {
+      width: 180px;
       transform: rotate(-8deg) translateY(16px);
       z-index: 1;
     }
 
     .phone:nth-child(2) {
+      width: 200px;
       transform: translateY(0);
       z-index: 3;
       margin: 0 -24px;
-      width: 200px;
     }
 
     .phone:nth-child(3) {
+      width: 180px;
       transform: rotate(8deg) translateY(16px);
       z-index: 1;
     }
 
-    /* ── Orange section — features ────────────────────────── */
-    .features-section {
-      background: var(--orange);
-      padding: 80px 48px;
-    }
-
-    .features-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .feat {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 20px;
-      padding: 32px 24px;
-      color: var(--white);
-    }
-
-    .feat .feat-icon {
-      font-size: 28px;
-      margin-bottom: 14px;
-    }
-
-    .feat h3 {
-      font-family: var(--heading);
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .feat p {
-      font-size: 14px;
-      line-height: 1.6;
-      opacity: 0.85;
-    }
-
-    /* ── How it works ─────────────────────────────────────── */
-    .how {
-      padding: 100px 48px;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .how .section-label {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--orange);
-      margin-bottom: 12px;
-    }
-
-    .how h2 {
-      font-family: var(--heading);
-      font-size: clamp(32px, 4.5vw, 48px);
-      font-weight: 900;
-      margin-bottom: 56px;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 48px;
-      text-align: left;
-      counter-reset: step;
-    }
-
-    .step { counter-increment: step; }
-
-    .step::before {
-      content: counter(step);
-      font-family: var(--heading);
-      font-size: 48px;
-      color: var(--orange);
-      opacity: 0.25;
-      line-height: 1;
-      display: block;
-      margin-bottom: 12px;
-    }
-
-    .step h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .step p {
-      font-size: 14px;
-      color: var(--gray);
-      line-height: 1.6;
-    }
-
-    /* ── Bottom CTA ───────────────────────────────────────── */
-    .cta-bottom {
-      padding: 80px 48px;
-      text-align: center;
-    }
-
-    .cta-bottom h2 {
-      font-family: var(--heading);
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-
-    .cta-bottom p {
-      font-size: 16px;
-      color: var(--gray);
-      margin-bottom: 32px;
-    }
-
-    /* ── Footer ────────────────────────────────────────────── */
+    /* ── Footer ───────────────────────────────────────────── */
     footer {
-      padding: 32px 48px;
+      padding: 20px 48px;
       border-top: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      max-width: 1100px;
-      margin: 0 auto;
+      flex-shrink: 0;
     }
 
     .footer-left {
@@ -345,28 +172,16 @@
     /* ── Responsive ────────────────────────────────────────── */
     @media (max-width: 860px) {
       nav { padding: 20px 24px; }
-      .nav-links { gap: 20px; }
-
-      .hero { padding: 60px 24px 40px; }
-
-      .phones { padding: 20px 16px 60px; }
-      .phone { width: 120px; border-radius: 10px; }
-      .phone:nth-child(2) { width: 140px; margin: 0 -16px; }
-
-      .features-section { padding: 60px 24px; }
-      .features-inner { grid-template-columns: 1fr; max-width: 400px; }
-
-      .how { padding: 72px 24px; }
-      .steps { grid-template-columns: 1fr; gap: 32px; }
-
-      .testimonial { padding: 60px 24px; }
-      .cta-bottom { padding: 60px 24px; }
-
+      .hero { padding: 40px 24px 0; }
+      .phones { padding: 20px 16px 40px; }
+      .phone:nth-child(1) { width: 140px; }
+      .phone:nth-child(2) { width: 160px; margin: 0 -16px; }
+      .phone:nth-child(3) { width: 140px; }
       footer {
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
         text-align: center;
-        padding: 24px;
+        padding: 16px 24px;
       }
     }
 
@@ -379,106 +194,37 @@
 </head>
 <body>
 
-  <!-- ── Nav ─────────────────────────────────────────────── -->
   <nav>
     <a href="/" class="nav-logo"><img src="logo.png" alt="Big Stretch logo">Big Stretch</a>
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#how">How it works</a>
-      <a href="https://apps.apple.com/app/big-stretch" class="download" target="_blank" rel="noopener">Download</a>
-    </div>
   </nav>
 
-  <!-- ── Hero ────────────────────────────────────────────── -->
   <section class="hero">
     <h1>Your puppy's first year, sorted.</h1>
     <p>Potty tracking, training commands, feeding logs, and daily streaks — everything new puppy parents need in one app.</p>
-    <div class="hero-quote">
-      <span class="stars">★★★★★</span>
-      <blockquote>"I finally feel like I know what I'm doing as a puppy parent."</blockquote>
-      <cite>— First-time golden retriever owner</cite>
-    </div>
     <a href="https://apps.apple.com/app/big-stretch" class="app-store-link" target="_blank" rel="noopener">
       <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
     </a>
     <div class="hero-note">Free 7-day trial · Cancel anytime</div>
-  </section>
 
-  <!-- ── 3 Screenshot showcase ─────────────────────────── -->
-  <section class="phones">
-    <div class="phone">
-      <img src="screenshot-1.png" alt="Today screen — potty streaks, feeding logs, and daily tracking" loading="lazy">
-    </div>
-    <div class="phone">
-      <img src="screenshot-2.png" alt="Practice screen — step-by-step training commands" loading="lazy">
-    </div>
-    <div class="phone">
-      <img src="screenshot-3.png" alt="Progress screen — level, XP, and weekly activity chart" loading="lazy">
-    </div>
-  </section>
-
-  <!-- ── Features (orange section) ───────────────────────── -->
-  <section class="features-section" id="features">
-    <div class="features-inner">
-      <div class="feat">
-        <div class="feat-icon">📍</div>
-        <h3>Potty Tracking</h3>
-        <p>Log every break with one tap. Spot patterns, predict schedules, reduce accidents.</p>
+    <div class="phones">
+      <div class="phone">
+        <img src="screenshot-1.png" alt="Today screen" loading="lazy">
       </div>
-      <div class="feat">
-        <div class="feat-icon">🏠</div>
-        <h3>Crate Training</h3>
-        <p>Timed crate sessions with built-in reminders. Build confidence and a calm routine.</p>
+      <div class="phone">
+        <img src="screenshot-2.png" alt="Practice screen" loading="lazy">
       </div>
-      <div class="feat">
-        <div class="feat-icon">🎓</div>
-        <h3>Training Commands</h3>
-        <p>50+ commands from sit to heel. Step-by-step guides with built-in progress tracking.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">🏆</div>
-        <h3>Streaks & XP</h3>
-        <p>Earn XP for every log. Build streaks, unlock badges, and watch your Puppy Score climb.</p>
+      <div class="phone">
+        <img src="screenshot-3.png" alt="Progress screen" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- ── How it works ─────────────────────────────────────── -->
-  <section class="how" id="how">
-    <p class="section-label">How it works</p>
-    <h2>Three taps. That's it.</h2>
-    <div class="steps">
-      <div class="step">
-        <h3>Add your puppy</h3>
-        <p>Name, breed, birthday. Takes 30 seconds and we personalize everything.</p>
-      </div>
-      <div class="step">
-        <h3>Log daily activities</h3>
-        <p>Potty, feedings, training, socialization — all one-tap logs throughout the day.</p>
-      </div>
-      <div class="step">
-        <h3>Watch them grow</h3>
-        <p>Your Puppy Score updates daily. Streaks keep you consistent. Badges celebrate wins.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Bottom CTA ───────────────────────────────────────── -->
-  <section class="cta-bottom">
-    <h2>Start your puppy's best year.</h2>
-    <p>Free to download. Free to try for 7 days.</p>
-    <a href="https://apps.apple.com/app/big-stretch" class="app-store-link" target="_blank" rel="noopener">
-      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-    </a>
-  </section>
-
-  <!-- ── Footer ──────────────────────────────────────────── -->
   <footer>
     <span class="footer-left">&copy; 2026 Pia Industries LLC</span>
     <div class="footer-right">
-      <a href="/terms">Terms</a>
       <a href="/privacy">Privacy</a>
-      <a href="mailto:support@bigstretchapp.com">Support</a>
+      <a href="/terms">Terms</a>
+      <a href="/support">Support</a>
     </div>
   </footer>
 
