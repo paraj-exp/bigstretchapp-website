@@ -63,6 +63,21 @@
       border-radius: 8px;
     }
 
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--gray);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
     /* ── Hero ─────────────────────────────────────────────── */
     .hero {
       display: flex;
@@ -196,6 +211,11 @@
 
   <nav>
     <a href="/" class="nav-logo"><img src="logo.png" alt="Big Stretch logo">Big Stretch</a>
+    <div class="nav-links">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/support">Support</a>
+    </div>
   </nav>
 
   <section class="hero">
